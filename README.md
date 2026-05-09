@@ -127,32 +127,6 @@ Deshbandhu College, University of Delhi · GPA: 7.0 / 10
 
 > **No automated Red Alert fires without > 95% model confidence OR explicit IO confirmation.**
 
----
-
-## Diagnostic Summary
-
-| Dimension | Score | Status |
-|---|---|---|
-| Problem Clarity | 8/10 | ✓ Validated |
-| iDEX Fit | 7/10 | ✓ Validated |
-| Solution Design | 6/10 | ⚠ Gap |
-| Competitive Moat | 5/10 | ⚠ Gap |
-| Budget Realism | 5/10 | ⚠ Gap |
-| Technical Feasibility | 5/10 | ⚠ Gap |
-| Data Strategy | 4/10 | ⚠ Gap |
-| Adversarial Robustness | 3/10 | ✗ Critical |
-| Market Validation | 3/10 | ✗ Critical |
-| Team & Execution | 2/10 | ✗ Critical |
-| **Overall** | **4.8/10** | **Needs Remediation** |
-
-### Top 3 Actions (Ranked by Submission Risk)
-
-1. **Team section** — Fill every placeholder. One named mentor with institution letterhead. A ₹1.5 crore application from `[Your Name]` gets rejected at document screening.
-2. **Working prototype** — Fine-tune ResNet-50 on FaceForensics++ (target ≥ 78% accuracy). Without prior work, the 18-month timeline is not credible.
-3. **Adversarial robustness section** — Add FGSM/PGD red-team plan. "Adversarial" is in the platform name; its absence is a direct contradiction.
-
----
-
 ## Phase Plan
 
 | Phase | Months | Deliverable | Status |
