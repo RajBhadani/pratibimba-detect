@@ -1,186 +1,173 @@
-# TATHYA — Tamper And THreat Intelligence analYsis Architecture
+# PRATIBIMBA AI — Zero Diagnostic
+### iDEX Open Challenge · Proactive Real-time Adversarial Threat Intelligence, Battlefield Imagery & Multimodal Bot Analysis
 
-> Real-Time AI Deepfake Detection for Operational Environments  
-> **iDEX DIO Open Challenge 2026** | Raj Bhadani, Deshbandhu College, University of Delhi
-
-[![Status](https://img.shields.io/badge/Status-In%20Development-orange)]()
-[![Challenge](https://img.shields.io/badge/iDEX%20DIO-2026-blue)]()
-[![Internship](https://img.shields.io/badge/Research-NIT%20Kurukshetra%202026-green)]()
+**Overall Readiness Score: 4.8 / 10**
 
 ---
 
-## The Problem
+## Principal Investigator
 
-AI-generated disinformation targeting Indian military operations reaches **10M+ users before official rebuttal** — with a detection lag exceeding **3 hours**. In incidents such as Galwan (June 2020) and Pahalgam (April 2025), synthetic media spread unchecked for hours before any correction was issued.
+**Raj Bhadani**
+B.Sc. (Hons.) Computer Science · Expected May 2026
+Deshbandhu College, University of Delhi · GPA: 7.0 / 10
 
-| Incident | Reach Before Rebuttal | Detection Lag | Documented Harm |
-|----------|----------------------|---------------|-----------------|
-| Galwan, June 2020 | 10M+ users | > 3 hours | Casualty count manipulation |
-| Pahalgam, April 2025 | 10M+ users | > 3 hours | Op security breach narrative |
+📧 rajbhadani9897@gmail.com | [LinkedIn](#) | [GitHub](#)
 
-Existing deepfake detectors make this worse — trained on clean benchmark data, they fail the moment video passes through WhatsApp, YouTube, or Twitter compression. **XceptionNet drops from 0.997 AUC on FaceForensics++ to 0.482 on Celeb-DF** — below chance — because social media compression destroys the pixel-level artifacts these models rely on.
+### Relevant Technical Skills
+- **ML / AI:** PyTorch, TensorFlow/Keras, Scikit-learn, OpenCV, transfer learning, model deployment
+- **CV / NLP:** CNN image classification, ResNet-18 (71% accuracy on FER-2013), IndicBERT, spaCy, NLTK
+- **Data:** Pandas, NumPy, Power BI, ETL pipelines, feature engineering
+- **Tools:** Jupyter, Git/GitHub, Google Colab, Kaggle, REST APIs, Bhashini API
 
-TATHYA is being built to work in the real world, not the lab.
+### Demonstrated Prior Work (Relevant to PRATIBIMBA AI)
+| Project | Stack | Result |
+|---|---|---|
+| Facial Expression Recognition | ResNet-18 + PyTorch | 71% test accuracy on FER-2013; +9pp over baseline CNN |
+| Tesla Stock Forecasting | Facebook Prophet | MAE 4.2, RMSE 6.8 on 90-day hold-out |
+| GHG Emission Prediction | XGBoost / Random Forest | R² = 0.91 |
+| Diabetes Classification | Scikit-learn | AUC-ROC = 0.87 |
+| Social Network Analysis | NetworkX | Betweenness/eigenvector centrality on 2,000-node health network |
+
+### Leadership
+- **President**, Cybernauts CS Society 2024–25 — led 30-member team, SYNTAX'25 fest (200+ participants)
+- **IT Head**, Unnat Bharat Abhiyan (UBA), Deshbandhu College — Government of India rural development initiative
+
+### Research Output
+> **Bhadani, R. & Pratyaksh** — *Social Network Analysis in Public Health, Security, and Social Media Contexts*
+> DSE Research Methodology, Deshbandhu College, University of Delhi (2025)
+>
+> Synthesizes SNA applications across three domains: multisectoral tobacco governance (India), COVID-19 mask discourse (452K tweets), and terrorist network mapping (61 organisations). Applied betweenness centrality to identify ISI's brokerage role (score: 12.6) and top-10 hidden influencers in a 2,000-node health network.
+> Supervised by: Prof. Rakhi Saxena
 
 ---
 
-## System Architecture
+## Model Architecture
 
 ```
-Input Media (image / video / audio)
-        │
-        ▼
-┌───────────────────────────────────────────┐
-│                  DETECT                   │
-│  Binary classification — real or synthetic│
-│  FaceForensics++ fine-tuned CNN           │
-│  + compression-aware augmentation         │
-│  + frequency-domain (DCT) feature branch  │
-│  Target: >75% accuracy | <120s inference  │
-└──────────────────┬────────────────────────┘
-                   │
-                   ▼
-┌───────────────────────────────────────────┐
-│                  TRACE                    │
-│  Source attribution + propagation mapping │
-│  GAN fingerprinting + Social Network      │
-│  Analysis (NetworkX — betweenness &       │
-│  eigenvector centrality)                  │
-│  Target: Origin node ID within 5 min      │
-└──────────────────┬────────────────────────┘
-                   │
-                   ▼
-┌───────────────────────────────────────────┐
-│                  ALERT                    │
-│  Tiered notification pipeline             │
-│  Auto-flag (>95%) → Review (70–95%)       │
-│  → Log (<70%)                             │
-│  Target: <8 minutes end-to-end latency    │
-└───────────────────────────────────────────┘
+╔══════════════════════════════════════════════════════════════════╗
+║               PRATIBIMBA AI — 4-Layer Detection Pipeline         ║
+╚══════════════════════════════════════════════════════════════════╝
+
+  SOURCES ──────────────────────────────────────────────────────────
+  Twitter/X  Telegram  WhatsApp  YouTube  News APIs  Satellite Feed
+       │           │         │        │        │            │
+       └─────────────────────┴────────┴────────┘            │
+                             │                               │
+  ┌──────────────────────────▼───────────────────────────────▼──┐
+  │  LAYER 1 · INGEST                                  T+0:30s  │
+  │  Real-time scraping · Platform API ingestion                 │
+  │  Content deduplication · Language detection (Hi/Ur/Pa/En)   │
+  └──────────────────────────────┬──────────────────────────────┘
+                                 │
+  ┌──────────────────────────────▼──────────────────────────────┐
+  │  LAYER 2 · DETECT                                  T+2:00s  │
+  │                                                              │
+  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
+  │  │  2A · VIDEO  │  │  2B · AUDIO  │  │  2C · IMAGE  │      │
+  │  │  ResNet-50   │  │  Spectral    │  │  CNN Binary  │      │
+  │  │  EfficientNet│  │  Analysis    │  │  Classifier  │      │
+  │  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘      │
+  │         │                 │                  │               │
+  │  ┌──────┴─────────────────┴──────────────────┘              │
+  │  │                                                           │
+  │  │  2D · TEXT · IndicBERT multilingual classification        │
+  │  └──────────────────────────────────────────────────────┐   │
+  │                                                          │   │
+  │                    CONFIDENCE SCORE ◄────────────────────┘   │
+  └──────────────────────────┬──────────────────────────────────┘
+                             │
+           ┌─────────────────┼──────────────────┐
+           │                 │                  │
+         < 70%           70–95%              > 95%
+           │                 │                  │
+        ┌──▼──┐         ┌────▼────┐        ┌───▼────┐
+        │ LOG │         │  AMBER  │        │  RED   │
+        │only │         │ Human   │        │ AUTO   │
+        └─────┘         │ Review  │        │ ALERT  │
+                        │15m SLA  │        │ 10s    │
+                        └────┬────┘        └───┬────┘
+                             └────────┬────────┘
+                                      │ Confirmed
+  ┌───────────────────────────────────▼──────────────────────────┐
+  │  LAYER 3 · TRACE                                   T+5:00m  │
+  │  GAN Fingerprint Matching · Tool-of-Origin Attribution       │
+  │  Geo-Attribution · Bot Network Mapping (SNA)                 │
+  │  Spread Velocity Analysis · Source Actor Identification      │
+  └───────────────────────────────────┬──────────────────────────┘
+                                      │
+  ┌───────────────────────────────────▼──────────────────────────┐
+  │  LAYER 4 · RESPOND                                 T+8:00m  │
+  │  Structured Intel Report Generation                          │
+  │  Encrypted Push Alert → Command / IO Duty Officer            │
+  │  PIB / BOOM API Trigger for Public Debunk (if applicable)    │
+  └──────────────────────────────────────────────────────────────┘
+
+  END-TO-END LATENCY (AUTO PATH): < 8 MINUTES
+  FALSE POSITIVE TARGET: < 2% at AMBER threshold
+  ADVERSARIAL ROBUSTNESS TARGET: < 10% accuracy degradation under FGSM/PGD
 ```
 
----
+### Latency SLA per Layer
 
-## Current Development Status
+| Layer | Operation | Target |
+|---|---|---|
+| INGEST | Content identified after posting | ≤ 30 seconds |
+| DETECT | Analysis complete per item | ≤ 120 seconds |
+| TRACE | Attribution report | ≤ 5 minutes |
+| ALERT | Push notification after detection | ≤ 10 seconds |
+| **End-to-end** | **Post to Red Alert (auto path)** | **< 8 minutes** |
 
-> This project is under active development as part of iDEX DIO 2026 and a Summer Research Internship at NIT Kurukshetra (June–July 2026) under Dr. Nidhi Gupta, Department of Computer Applications.
+### Confidence Gate Protocol
 
-| Module | Status | Description |
-|--------|--------|-------------|
-| DETECT — Baseline | 🔄 In Progress | XceptionNet on FF++ — confirming accuracy drop under compression |
-| DETECT — Augmentation | 📋 Planned | Compression-aware training (JPEG q40–90, H.264 CRF 23–40) |
-| DETECT — Frequency branch | 📋 Planned | DCT coefficient map fusion alongside spatial features |
-| TRACE — Propagation graph | 📋 Planned | NetworkX SNA on social media datasets |
-| ALERT — Pipeline | 📋 Planned | Tiered alert logic with confidence thresholds |
+| Score | Action | SLA |
+|---|---|---|
+| > 95% | Automated Red Alert to IO | 10 seconds |
+| 70–95% | Amber flag → human review | 15-minute IO SLA |
+| < 70% | Log only, no alert | N/A |
 
----
-
-## Research Foundation
-
-**Core gap:** CNN-based detectors degrade 15–18% on cross-dataset benchmarks and fail critically on social media-compressed content. Three modifications address this:
-
-**1. Compression-aware augmentation**  
-Training frames randomly re-encoded at JPEG quality 40–90 and H.264 CRF 23–40 — simulating WhatsApp, YouTube, and Twitter compression profiles.
-
-**2. Frequency-domain feature branch**  
-DCT coefficient maps fed as a secondary input stream. Frequency residuals survive compression better than spatial edge artifacts.
-
-**3. Compression-robustness loss**  
-Binary cross-entropy combined with a regularizer penalising features that degrade between clean and compressed versions of the same frame.
-
-**Key references:**
-- Rössler et al. (2019). FaceForensics++. ICCV. [arxiv.org/abs/1901.08971](https://arxiv.org/abs/1901.08971)
-- Zhang et al. (2024). Face Forgery Detection — Fine-Grained Clues and Noise Inconsistency. IEEE TCSVT. [10.1109/TCSVT.2024.10669058](https://doi.org/10.1109/TCSVT.2024.10669058)
-- Yang et al. (2024). CSTAN. Sensors (MDPI). [10.3390/s24227101](https://doi.org/10.3390/s24227101)
-- Li et al. (2025). PLADA. [arXiv:2506.20548](https://arxiv.org/abs/2506.20548)
+> **No automated Red Alert fires without > 95% model confidence OR explicit IO confirmation.**
 
 ---
 
-## Performance Targets
+## Diagnostic Summary
 
-| Module | Metric | Target |
-|--------|--------|--------|
-| DETECT | Accuracy on clean data | > 75% |
-| DETECT | AUC on c40 compressed variant | > 85% |
-| DETECT | Cross-dataset AUC (Celeb-DF-v2) | > 80% |
-| DETECT | Inference time per clip | < 120s |
-| TRACE | Origin node identification | Within 5 min |
-| ALERT | End-to-end latency | < 8 min |
+| Dimension | Score | Status |
+|---|---|---|
+| Problem Clarity | 8/10 | ✓ Validated |
+| iDEX Fit | 7/10 | ✓ Validated |
+| Solution Design | 6/10 | ⚠ Gap |
+| Competitive Moat | 5/10 | ⚠ Gap |
+| Budget Realism | 5/10 | ⚠ Gap |
+| Technical Feasibility | 5/10 | ⚠ Gap |
+| Data Strategy | 4/10 | ⚠ Gap |
+| Adversarial Robustness | 3/10 | ✗ Critical |
+| Market Validation | 3/10 | ✗ Critical |
+| Team & Execution | 2/10 | ✗ Critical |
+| **Overall** | **4.8/10** | **Needs Remediation** |
 
----
+### Top 3 Actions (Ranked by Submission Risk)
 
-## Repository Structure
-
-```
-tathya-detect/
-├── detect/
-│   ├── model.py                    # Classifier architecture
-│   ├── train.py                    # Training pipeline
-│   └── inference.py                # Single image/video inference
-├── trace/
-│   └── propagation.py              # NetworkX SNA — source attribution
-├── alert/
-│   └── pipeline.py                 # Tiered alert logic
-├── notebooks/
-│   └── baseline_xception.ipynb     # Baseline + compression drop analysis
-├── data/
-│   └── README.md                   # FF++ dataset setup
-├── docs/
-│   └── TATHYA_Project_Summary.pdf
-└── requirements.txt
-```
+1. **Team section** — Fill every placeholder. One named mentor with institution letterhead. A ₹1.5 crore application from `[Your Name]` gets rejected at document screening.
+2. **Working prototype** — Fine-tune ResNet-50 on FaceForensics++ (target ≥ 78% accuracy). Without prior work, the 18-month timeline is not credible.
+3. **Adversarial robustness section** — Add FGSM/PGD red-team plan. "Adversarial" is in the platform name; its absence is a direct contradiction.
 
 ---
 
-## Quickstart
+## Phase Plan
 
-```bash
-git clone https://github.com/rajbhadani/tathya-detect
-cd tathya-detect
-pip install -r requirements.txt
-
-# Single image inference
-python detect/inference.py --input path/to/image.jpg
-
-# Video inference
-python detect/inference.py --input path/to/video.mp4 --mode video
-```
+| Phase | Months | Deliverable | Status |
+|---|---|---|---|
+| Phase 1 | 1–6 | Video + Audio detection prototype; FaceForensics++ benchmark | To build |
+| Phase 2 | 7–12 | Image + Text modules; South Asian face test set | Gated on Phase 1 |
+| Phase 3 | 13–15 | TRACE layer: GAN fingerprinting + geo-attribution | Gated on Phase 2 |
+| Phase 4 | 16–17 | RESPOND layer: alert pipeline integration | Sequential |
+| Phase 5 | 17–18 | Red-team: FGSM, PGD, GAN inversion adversarial testing | Mandatory |
 
 ---
 
-## Dataset Setup
+## References
 
-TATHYA trains on [FaceForensics++](https://github.com/ondyari/FaceForensics).
-
-1. Request access: https://github.com/ondyari/FaceForensics
-2. Download compressed variants c23 and c40
-3. Cross-dataset evaluation: [Celeb-DF-v2](https://github.com/yuezunli/celeb-deepfakeforensics) and [DFDC-Preview](https://ai.facebook.com/datasets/dfdc/)
-
-See `data/README.md` for folder structure.
-
----
-
-## Operational Validation Request
-
-If you are a serving or retired defence or intelligence professional, I am seeking responses to two specific questions for the iDEX threat model:
-
-1. Do coordinated disinformation campaigns targeting active operations constitute a ground-level threat — and did the 3+ hour detection lag create measurable operational vulnerability?
-2. Would an 8-minute detection-to-alert pipeline have practical effect on that vulnerability, or is the decision cycle too fast or too slow for this latency to matter?
-
-A 15-minute call or written response is sufficient. Your input would be cited as operational validation and formally acknowledged in the iDEX submission.
-
-📧 rajbhadani9897@gmail.com | 📞 +91 9572768016
-
----
-
-## Author
-
-**Raj Bhadani**  
-B.Sc. (Hons) Computer Science,
-
-Deshbandhu College, University of Delhi  
-[rajbhadani9897@gmail.com](mailto:rajbhadani9897@gmail.com) | [LinkedIn](https://linkedin.com/in/raj-bhadani-b4b729258) | [GitHub](https://github.com/RajBhadani)
-
----
-
-*iDEX DIO Open Challenge 2026 | June 2026*
+- Bhadani, R. & Pratyaksh (2025). *Applications of Social Network Analysis in Public Health and Security.* DSE Research Methodology, Deshbandhu College, University of Delhi. [Supervisor: Prof. Rakhi Saxena]
+- Mondal, S. et al. (2022). BMJ Global Health. https://gh.bmj.com/content/7/1/e006471
+- Ahmed, W. et al. (2020). IJERPH. https://www.mdpi.com/1660-4601/17/21/8235
+- Basu, A. (2005). ResearchGate. Social Network Analysis of Terrorist Organizations in India.
