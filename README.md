@@ -1,8 +1,6 @@
 # PRATIBIMBA AI
 ### iDEX Open Challenge · Proactive Real-time Adversarial Threat Intelligence, Battlefield Imagery & Multimodal Bot Analysis
 
-**Overall Readiness Score: 4.8 / 10**
-
 ---
 
 ## Principal Investigator
