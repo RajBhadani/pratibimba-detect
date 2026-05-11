@@ -1,4 +1,4 @@
-# PRATIBIMBA AI
+# PRATIBIMBA-AI
 ### iDEX Open Challenge · Proactive Real-time Adversarial Threat Intelligence, Battlefield Imagery & Multimodal Bot Analysis
 
 ---
