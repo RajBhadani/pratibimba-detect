@@ -41,7 +41,7 @@
 ## Principal Investigator
 
 **Raj Bhadani**
-B.Sc. (Hons.) Computer Science · Expected May 2026
+B.Sc. (Hons.) Computer Science · Expected  June 2026
 Deshbandhu College, University of Delhi · GPA: 7.0 / 10
 
 📧 rajbhadani9897@gmail.com | [LinkedIn](#) | [GitHub](https://github.com/rajbhadani9897)
