@@ -1,7 +1,7 @@
 <div align="center">
 
 <img src="https://img.shields.io/badge/STATUS-iDEX%20Open%20Challenge%20Submission-1B2A4A?style=for-the-badge&labelColor=C8963E" />
-<img src="https://img.shields.io/badge/CLASSIFICATION-DEFENCE%20RESEARCH-1B2A4A?style=for-the-badge" />
+<img src="https://img.shields.io/badge/CLASSIFICATION-DEFENCE%20RESEARCH-1B2A4A?style=for-the-badge" /> 
 <img src="https://img.shields.io/badge/DURATION-18%20Months-1B2A4A?style=for-the-badge" />
 
 <br/><br/>
